@@ -1,0 +1,202 @@
+﻿.reklam-uyarisi-admin {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+}
+
+.reklam-uyarisi-admin h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.reklam-uyarisi-admin h1 .dashicons {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+    color: #8b0000; /* Koyu Kan Kirmizisi */
+}
+
+.reklam-uyarisi-admin h2 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 30px 0 0 0;
+    padding: 16px 24px;
+    background: #1a1a1a; /* Siyah/Koyu Gri */
+    color: #fff;
+    border-radius: 12px 12px 0 0;
+    border-bottom: 2px solid #8b0000;
+}
+
+.reklam-uyarisi-admin .form-table {
+    background: #fff;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    margin-bottom: 0;
+    border: 1px solid #e2e8f0;
+    border-top: none;
+}
+
+.reklam-uyarisi-admin .form-table th {
+    padding: 24px;
+    font-weight: 600;
+    color: #475569;
+    width: 220px;
+    vertical-align: top;
+}
+
+.reklam-uyarisi-admin .form-table td {
+    padding: 24px;
+    vertical-align: top;
+}
+
+.reklam-uyarisi-admin .form-table tr:not(:last-child) {
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.reklam-uyarisi-admin input[type=text],
+.reklam-uyarisi-admin input[type=number],
+.reklam-uyarisi-admin textarea,
+.reklam-uyarisi-admin select {
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    width: 100%;
+    max-width: 400px;
+    transition: all 0.2s;
+}
+
+.reklam-uyarisi-admin input[type=text]:focus,
+.reklam-uyarisi-admin input[type=number]:focus,
+.reklam-uyarisi-admin textarea:focus,
+.reklam-uyarisi-admin select:focus {
+    border-color: #8b0000;
+    box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
+    outline: none;
+}
+
+.reklam-uyarisi-admin input[type=color] {
+    width: 60px;
+    height: 40px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.reklam-uyarisi-admin input[type=checkbox] {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 1px solid #cbd5e1;
+    cursor: pointer;
+    accent-color: #8b0000;
+}
+
+.reklam-uyarisi-admin .button-primary {
+    background: #8b0000 !important;
+    border-color: #8b0000 !important;
+    border-radius: 8px !important;
+    padding: 12px 32px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    margin-top: 24px !important;
+    transition: all 0.2s !important;
+    height: auto !important;
+    line-height: normal !important;
+}
+
+.reklam-uyarisi-admin .button-primary:hover {
+    background: #660000 !important;
+    border-color: #660000 !important;
+    transform: translateY(-1px);
+}
+
+/* Stats Page */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    margin-top: 30px;
+}
+
+.stat-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e2e8f0;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #8b0000;
+}
+
+.stat-icon {
+    margin-bottom: 16px;
+}
+
+.stat-icon .dashicons {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    color: #8b0000;
+}
+
+.stat-value {
+    font-size: 36px;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 8px;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #64748b;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Notice */
+.reklam-uyarisi-admin .notice {
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 20px 0;
+    border-left: 4px solid #8b0000;
+}
+
+@media (max-width: 782px) {
+    .reklam-uyarisi-admin .form-table th,
+    .reklam-uyarisi-admin .form-table td {
+        display: block;
+        width: auto;
+        padding: 12px 20px;
+    }
+    
+    .reklam-uyarisi-admin .form-table th {
+        padding-bottom: 0;
+    }
+}

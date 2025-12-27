@@ -1,0 +1,297 @@
+﻿:root {
+    /* Varsayilan Degerler - Admin panelinden gelenlerle guncellenir */
+    --popup-primary: #8b0000;
+    --popup-accent: #dc2626;
+    --popup-bg: #050505;
+    --popup-text: #ffffff;
+    --popup-blur: 8px;
+    --popup-opacity: 0.95;
+    --popup-radius: 20px;
+}
+
+#popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2147483647;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, var(--popup-opacity));
+    backdrop-filter: blur(var(--popup-blur));
+    -webkit-backdrop-filter: blur(var(--popup-blur));
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#popup-overlay.popup-visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+#popup-overlay.popup-position-top { align-items: flex-start; padding-top: 60px; }
+#popup-overlay.popup-position-bottom { align-items: flex-end; padding-bottom: 60px; }
+#popup-overlay.popup-position-bottom-right { align-items: flex-end; justify-content: flex-end; padding: 30px; }
+#popup-overlay.popup-position-bottom-left { align-items: flex-end; justify-content: flex-start; padding: 30px; }
+
+.popup-container {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    padding: 45px 40px;
+    border-radius: var(--popup-radius);
+    text-align: center;
+    box-sizing: border-box;
+    transform: scale(0.95) translateY(10px);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    
+    /* Temel Stil - Degiskenleri Kullanir */
+    background: var(--popup-bg);
+    color: var(--popup-text);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.popup-visible .popup-container {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+/* --- Animasyonlar --- */
+.popup-animation-fade .popup-container { transform: none; }
+.popup-animation-slide-up .popup-container { transform: translateY(60px); }
+.popup-animation-slide-down .popup-container { transform: translateY(-60px); }
+.popup-animation-bounce .popup-container { transform: scale(0.5); }
+.popup-animation-flip .popup-container { transform: perspective(800px) rotateX(-70deg); }
+
+.popup-animation-fade.popup-visible .popup-container,
+.popup-animation-slide-up.popup-visible .popup-container,
+.popup-animation-slide-down.popup-visible .popup-container { transform: translateY(0); opacity: 1; }
+.popup-animation-bounce.popup-visible .popup-container { transform: scale(1); opacity: 1; }
+.popup-animation-flip.popup-visible .popup-container { transform: perspective(800px) rotateX(0); opacity: 1; }
+
+/* --- Temalar --- */
+
+/* Koyu (Varsayilan - Degiskenlere bagli) */
+.popup-theme-dark .popup-container {
+    /* Zaten base style'da tanimli */
+}
+.popup-theme-dark .popup-icon svg { 
+    fill: var(--popup-accent); 
+    filter: drop-shadow(0 0 20px rgba(220, 38, 38, 0.3)); 
+}
+.popup-theme-dark .popup-button { 
+    background: linear-gradient(135deg, var(--popup-primary) 0%, var(--popup-accent) 100%);
+    box-shadow: 0 10px 25px -5px rgba(139, 0, 0, 0.5);
+}
+
+/* Acik (Override eder) */
+.popup-theme-light .popup-container {
+    background: #ffffff !important;
+    color: #1a1a1a !important;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+.popup-theme-light .popup-desc { color: #555 !important; }
+.popup-theme-light .popup-list li { background: #f5f5f5 !important; color: #333 !important; }
+.popup-theme-light .popup-close-x { color: #333 !important; background: #f0f0f0 !important; }
+.popup-theme-light .popup-close-x:hover { background: #e0e0e0 !important; }
+.popup-theme-light .popup-button {
+    color: #fff !important;
+    background: linear-gradient(135deg, var(--popup-primary) 0%, var(--popup-accent) 100%);
+}
+
+/* Cam (Glassmorphism) */
+.popup-theme-glass .popup-container {
+    background: rgba(20, 20, 20, 0.75) !important;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    color: #fff !important;
+}
+
+/* Gradient */
+.popup-theme-gradient .popup-container {
+    background: linear-gradient(160deg, #1a0505 0%, #2a0a0a 100%) !important;
+    border: 1px solid rgba(220, 38, 38, 0.3);
+}
+.popup-theme-gradient .popup-button {
+    background: #fff !important;
+    color: var(--popup-primary) !important;
+}
+
+/* Neon */
+.popup-theme-neon .popup-container {
+    background: #000 !important;
+    border: 1px solid var(--popup-primary);
+    box-shadow: 0 0 30px rgba(139, 0, 0, 0.4), inset 0 0 30px rgba(139, 0, 0, 0.1);
+}
+.popup-theme-neon .popup-title { text-shadow: 0 0 20px var(--popup-primary); }
+.popup-theme-neon .popup-button { 
+    background: transparent !important; 
+    border: 1px solid var(--popup-accent) !important; 
+    box-shadow: 0 0 20px var(--popup-accent);
+    text-shadow: 0 0 8px #fff;
+    color: #fff !important;
+}
+.popup-theme-neon .popup-button:hover:not(:disabled) {
+    background: var(--popup-accent) !important;
+    box-shadow: 0 0 40px var(--popup-accent);
+}
+
+/* --- Bilesenler --- */
+
+/* Ikon */
+.popup-icon { margin-bottom: 28px; }
+.popup-icon svg {
+    width: 72px;
+    height: 72px;
+    fill: var(--popup-accent);
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+}
+
+/* Baslik */
+.popup-title {
+    font-size: 28px;
+    font-weight: 800;
+    margin: 0 0 16px 0;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+}
+
+/* Aciklama */
+.popup-desc {
+    font-size: 16px;
+    line-height: 1.65;
+    margin: 0 0 32px 0;
+    opacity: 0.85;
+    font-weight: 400;
+}
+
+/* Liste */
+.popup-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px 0;
+    text-align: left;
+}
+.popup-list li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.06);
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+.popup-list li:last-child { margin-bottom: 0; }
+.popup-list li:hover { 
+    transform: translateX(5px); 
+    background: rgba(255, 255, 255, 0.1); 
+    border-color: rgba(255, 255, 255, 0.1);
+}
+.popup-list li svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--popup-accent);
+    flex-shrink: 0;
+}
+
+/* Kapatma Butonu (X) */
+.popup-close-x {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: rgba(255, 255, 255, 0.08);
+    color: inherit;
+    font-size: 22px;
+    line-height: 1;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.6;
+}
+.popup-close-x:hover { 
+    background: rgba(255, 255, 255, 0.2); 
+    opacity: 1; 
+    transform: rotate(90deg); 
+}
+
+/* Ana Aksiyon Butonu */
+.popup-button {
+    width: 100%;
+    padding: 18px 28px;
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, var(--popup-primary) 0%, var(--popup-accent) 100%);
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.02em;
+}
+.popup-button::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(rgba(255,255,255,0.15), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.popup-button:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px -5px rgba(220, 38, 38, 0.5);
+}
+.popup-button:hover:not(:disabled)::before { opacity: 1; }
+.popup-button:active:not(:disabled) { transform: translateY(-1px); }
+.popup-button:disabled {
+    background: #333;
+    color: #888;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+.popup-button .countdown {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    background: rgba(0,0,0,0.25);
+    border-radius: 50%;
+    margin-left: 10px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Mobil Uyumluluk */
+@media (max-width: 600px) {
+    #popup-overlay { padding: 15px; }
+    .popup-container { padding: 35px 24px; width: 100%; max-width: 100%; border-radius: 24px; }
+    .popup-title { font-size: 24px; }
+    .popup-icon svg { width: 56px; height: 56px; }
+    .popup-button { padding: 16px 24px; font-size: 16px; }
+    .popup-desc { font-size: 15px; }
+}
